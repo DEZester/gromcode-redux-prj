@@ -1,4 +1,4 @@
-# React Calendar
+# Redux Airport
 
 ### [Site link](https://redux-airport.netlify.app/)
 
