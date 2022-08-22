@@ -1,6 +1,13 @@
 .flights {
   margin-top: 20px;
-  &__link {
+  &__links {
+    display: flex;
+    width: 1120px;
+    height: 59px;
+    background: #73d2f0;
+    border-radius: 50px 50px 0 0;
+  }
+  &__links-item {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,16 +18,49 @@
     color: #fff;
     font-size: 24px;
     border-radius: 50px 50px 0 0;
-    &__active {
-      background-color: #fff;
-      color: #73d2f0;
-    }
+  }
+  &__link-active {
+    background-color: #fff;
+    color: #73d2f0;
   }
 }
-.flights-container {
+.dates {
   display: flex;
-  width: 1120px;
-  height: 59px;
-  background: #73d2f0;
-  border-radius: 50px 50px 0 0;
+  height: 60px;
+  background: white;
+  padding: 10px;
+
+  &__choise {
+    margin-right: 40px;
+    outline: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+
+    &::-webkit-datetime-edit {
+      display: none;
+    }
+
+    &::-webkit-calendar-picker-indicator {
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+    }
+  }
+  &__day {
+    padding: 0 15px;
+    text-align: center;
+    color: #b8b9b9;
+    border-bottom: 3px solid #b8b9b9;
+    font-weight: 700;
+    cursor: pointer;
+    &__active {
+      color: #1eb7ee;
+      border-color: #1eb7ee;
+    }
+  }
+  &__day-number {
+    font-size: 14px;
+    font-weight: normal;
+  }
 }
