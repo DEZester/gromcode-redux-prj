@@ -1,4 +1,5 @@
-@import './components/Search-page/searchPage.scss';
+@import './components/SearchPage/searchPage.scss';
+@import './components/FlightsPage/flightsPage.scss';
 
 * {
   box-sizing: border-box;
@@ -12,7 +13,8 @@ body {
 }
 .page {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   background-color: #e7efec;
   height: 100vh;
 }

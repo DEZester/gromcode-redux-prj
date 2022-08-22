@@ -18,7 +18,6 @@
 .search-field {
   position: relative;
   margin-top: 24px;
-  margin-bottom: 20px;
   &__loop {
     display: inline-block;
     position: absolute;
@@ -31,7 +30,7 @@
   &__form {
     display: flex;
     width: 740px;
-    height: 80px;
+    height: 40px;
   }
   &__input {
     flex: 1 1 auto;
