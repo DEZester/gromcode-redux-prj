@@ -74,6 +74,27 @@
   height: 38px;
   background: #fff;
   color: #9ea0a2;
+  &__item-terminal {
+    color: black;
+    font-weight: 700;
+    border: 1px solid black;
+    border-radius: 50%;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 35px;
+    font-size: 22px;
+    &__a {
+      color: #63c745;
+      border-color: #63c745;
+    }
+    &__d {
+      border-color: #1eb7ee;
+      color: #1eb7ee;
+    }
+  }
+
   &__raw {
     width: 100%;
     height: 60px;

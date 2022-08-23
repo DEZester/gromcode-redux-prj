@@ -43,7 +43,7 @@ const App = () => {
           <tbody className="table__list">
             <tr className="table__raw">
               <th className="table__item">
-                <span className="table__item-terminal table__item-terminal__a">A</span>
+                <span className="table__item-terminal table__item-terminal__d">D</span>
               </th>
               <th className="table__item">9:05</th>
               <th className="table__item">London</th>
