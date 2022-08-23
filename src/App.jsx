@@ -1,15 +1,19 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 import FlightsPage from './components/FlightsPage/FlightsPage';
 import SearchPage from './components/SearchPage/SearchPage';
 import fetchFlights from './gateway/gateway';
+import store from './store';
 
 const App = () => {
   fetchFlights();
   return (
-    <div className="page">
-      <SearchPage />
-      <FlightsPage />
-    </div>
+    <Provider store={store}>
+      <div className="page">
+        <SearchPage />
+        <FlightsPage />
+      </div>
+    </Provider>
   );
 };
 

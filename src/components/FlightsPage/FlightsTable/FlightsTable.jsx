@@ -1,7 +1,9 @@
 import React from 'react';
 import FlightsTableItem from './FlightsTableItem';
+import { connect } from 'react-redux';
+import { flightsListSelector } from '../features/flights.selectors';
 
-const FlightsTable = () => {
+const FlightsTable = ({ flightsList }) => {
   return (
     <table className="table">
       <thead>
@@ -15,13 +17,18 @@ const FlightsTable = () => {
         </tr>
       </thead>
       <tbody className="table__list">
-        <FlightsTableItem />
-        <FlightsTableItem />
-        <FlightsTableItem />
-        <FlightsTableItem />
+        {flightsList.map(flight => (
+          <FlightsTableItem key={flight.id} {...flight} />
+        ))}
       </tbody>
     </table>
   );
 };
 
-export default FlightsTable;
+const mapState = state => {
+  return {
+    flightsList: flightsListSelector(state),
+  };
+};
+
+export default connect(mapState)(FlightsTable);
