@@ -2,7 +2,7 @@ import React from 'react';
 
 const FlightsDates = () => {
   return (
-    <div className="flights__dates dates">
+    <div className="dates">
       <input type="date" className="dates__choise" />
       <div className="dates__day">
         <span className="dates__day-number">21/08</span>

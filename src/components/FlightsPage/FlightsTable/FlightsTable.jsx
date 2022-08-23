@@ -3,9 +3,9 @@ import FlightsTableItem from './FlightsTableItem';
 
 const FlightsTable = () => {
   return (
-    <table className="flights__table table">
+    <table className="table">
       <thead>
-        <tr className="table__info info">
+        <tr className="info">
           <th className="info__item">Terminal</th>
           <th className="info__item">Local Time</th>
           <th className="info__item">Destination</th>

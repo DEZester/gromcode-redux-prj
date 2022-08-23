@@ -3,7 +3,7 @@ import FlightsLink from './FlightsLink';
 
 const FlightsLinks = () => {
   return (
-    <div className="flights__links">
+    <div className="links">
       <FlightsLink name="departures" />
       <FlightsLink name="arrivals" />
     </div>
