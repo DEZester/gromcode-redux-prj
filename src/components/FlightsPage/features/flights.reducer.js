@@ -6,6 +6,7 @@ const initialState = {
     { id: 1, name: 'Kyiv' },
     { id: 2, name: 'New-York' },
     { id: 3, name: 'Dnepr' },
+    { id: 4, name: 'Dnepr' },
   ],
 };
 
