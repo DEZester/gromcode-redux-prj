@@ -11,13 +11,12 @@ const FlightsPage = ({ flightsList, getFlightsList }) => {
   useEffect(() => {
     getFlightsList();
   }, []);
-  console.log(flightsList.length);
+
   return (
     <div className="flights">
       <FlightsLinks />
       <FlightsDates />
-      {/* <NoFlights /> */}
-      <FlightsTable flightsList={flightsList} />
+      {flightsList.length > 0 ? <FlightsTable flightsList={flightsList} /> : <NoFlights />}
     </div>
   );
 };
