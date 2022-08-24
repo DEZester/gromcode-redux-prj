@@ -1,10 +1,19 @@
-export const ADD_TO_STATE = 'ADD_TO_STATE';
+import fetchFlights from '../../../gateway/gateway';
+export const FLIGHTS_DATA = 'FLIGHTS_DATA';
 
-export const addToState = flightsData => {
+export const flightsData = flightData => {
   return {
-    type: ADD_TO_STATE,
+    type: FLIGHTS_DATA,
     payload: {
-      flightsData,
+      flightData,
     },
+  };
+};
+
+export const getFlightsData = () => {
+  return function (dispatch) {
+    fetchFlights().then(flight => {
+      dispatch(flightsData(flight));
+    });
   };
 };

@@ -1,1 +1,2 @@
-export const flightsListSelector = state => state.flights.flightsList;
+export const departuresSelector = state => state.flights.departures;
+export const arrivalsSelector = state => state.flights.arrivals;

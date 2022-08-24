@@ -1,21 +1,18 @@
-import { ADD_TO_STATE } from './flights.actions';
+import { FLIGHTS_DATA } from './flights.actions';
 
 const initialState = {
-  flightsList: [
-    { id: 0, name: 'London' },
-    { id: 1, name: 'Kyiv' },
-    { id: 2, name: 'New-York' },
-    { id: 3, name: 'Dnepr' },
-    { id: 4, name: 'Dnepr' },
-  ],
+  departures: [],
+  arrivals: [],
 };
 
 const flightsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_TO_STATE:
+    case FLIGHTS_DATA:
+      const { departure, arrival } = action.payload.flightData.body;
       return {
         ...state,
-        state: action.payload.flightsData,
+        departures: departure,
+        arrivals: arrival,
       };
 
     default:
