@@ -1,0 +1,10 @@
+.noFlights {
+  display: grid;
+  place-items: center;
+  height: 300px;
+  &__title {
+    color: #212529;
+    font-weight: 600;
+    font-size: 40px;
+  }
+}

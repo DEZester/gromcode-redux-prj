@@ -1,14 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import FlightsTableItem from './FlightsTableItem';
-import { connect } from 'react-redux';
-import { departuresSelector } from '../features/flights.selectors';
-import * as flightsActions from '../features/flights.actions';
 
-const FlightsTable = ({ flightsList, getFlightsList }) => {
-  useEffect(() => {
-    getFlightsList();
-  }, []);
-
+const FlightsTable = ({ flightsList }) => {
   return (
     <table className="table">
       <thead>
@@ -39,14 +32,4 @@ const FlightsTable = ({ flightsList, getFlightsList }) => {
   );
 };
 
-const mapState = state => {
-  return {
-    flightsList: departuresSelector(state),
-  };
-};
-
-const mapDispatch = {
-  getFlightsList: flightsActions.getFlightsData,
-};
-
-export default connect(mapState, mapDispatch)(FlightsTable);
+export default FlightsTable;

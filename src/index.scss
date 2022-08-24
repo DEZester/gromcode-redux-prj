@@ -3,6 +3,7 @@
 @import './components/FlightsPage/FlightsLinks/flightsLinks.scss';
 @import './components/FlightsPage/FlightsDates/flightsDates.scss';
 @import './components/FlightsPage/FlightsTable/fligtsTable.scss';
+@import './components/FlightsPage/NoFlights/noFLights.scss';
 
 * {
   box-sizing: border-box;
@@ -13,11 +14,11 @@
 body {
   font-family: 'Open Sans', sans-serif;
   color: #2f2f2f;
+  background-color: #e7efec;
+  height: 100vh;
 }
 .page {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #e7efec;
-  height: 100vh;
 }
