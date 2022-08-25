@@ -1,9 +1,9 @@
 import React from 'react';
 
-const FlightsLink = ({ name }) => {
+const FlightsLink = ({ headerName }) => {
   return (
     <a href="#" className="links__item">
-      {name}
+      {headerName}
     </a>
   );
 };

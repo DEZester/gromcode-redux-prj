@@ -1,29 +1,37 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { departuresSelector } from './features/flights.selectors';
+import { departuresSelector, arrivalsSelector } from './features/flights.selectors';
 import * as flightsActions from './features/flights.actions';
 import FlightsDates from './FlightsDates/FlightsDates';
-import FlightsLinks from './FlightsLinks/FlightsLinks';
+import FlightsLink from './FlightsLinks/FlightsLink';
 import FlightsTable from './FlightsTable/FlightsTable';
 import NoFlights from './NoFlights/NoFights';
 
-const FlightsPage = ({ flightsList, getFlightsList }) => {
+const FlightsPage = ({ departureFlightsList, arrivalsFlightsList, getFlightsList }) => {
   useEffect(() => {
     getFlightsList();
   }, []);
 
   return (
     <div className="flights">
-      <FlightsLinks />
+      <div className="links">
+        <FlightsLink headerName="departures" />
+        <FlightsLink headerName="arrivals" />
+      </div>
       <FlightsDates />
-      {flightsList.length > 0 ? <FlightsTable flightsList={flightsList} /> : <NoFlights />}
+      {departureFlightsList.length > 0 ? (
+        <FlightsTable flightsList={departureFlightsList} />
+      ) : (
+        <FlightsTable flightsList={arrivalsFlightsList} />
+      )}
     </div>
   );
 };
 
 const mapState = state => {
   return {
-    flightsList: departuresSelector(state),
+    departureFlightsList: departuresSelector(state),
+    arrivalsFlightsList: arrivalsSelector(state),
   };
 };
 
