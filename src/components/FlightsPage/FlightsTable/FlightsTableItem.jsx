@@ -1,7 +1,15 @@
 import React from 'react';
 import moment from 'moment';
 
-const FlightsTableItem = ({ term, airlineImg, name, airlineName, flightCode, status, time }) => {
+const FlightsTableItem = ({
+  term,
+  airlineImg,
+  destination,
+  airlineName,
+  flightCode,
+  status,
+  time,
+}) => {
   const termCheck = `table__item-terminal ${
     term === 'D' ? `table__item-terminal__d` : `table__item-terminal__a`
   }`;
@@ -12,7 +20,7 @@ const FlightsTableItem = ({ term, airlineImg, name, airlineName, flightCode, sta
         <span className={termCheck}>{term}</span>
       </th>
       <th className="table__item">{moment(time).format('hh:mm')}</th>
-      <th className="table__item">{name}</th>
+      <th className="table__item">{destination}</th>
       <th className="table__item">{status}</th>
       <th className="table__item-airline">
         <ul className="table__item-airline-list">

@@ -15,18 +15,23 @@ const FlightsTable = ({ flightsList }) => {
         </tr>
       </thead>
       <tbody className="table__list">
-        {flightsList.map(flight => (
-          <FlightsTableItem
-            time={flight.actual}
-            key={flight.ID}
-            term={flight.term}
-            airlineImg={flight.airline.en.logoName}
-            name={[flight['airportToID.name_en']]}
-            airlineName={flight.airline.en.name}
-            flightCode={flight.codeShareData[0].codeShare}
-            status={flight.status}
-          />
-        ))}
+        {flightsList.map(flight => {
+          const destination = !!flight['airportToID.name_en']
+            ? flight['airportToID.name_en']
+            : flight['airportFromID.city_en'];
+          return (
+            <FlightsTableItem
+              time={flight.actual}
+              key={flight.ID}
+              term={flight.term}
+              airlineImg={flight.airline.en.logoName}
+              destination={destination}
+              airlineName={flight.airline.en.name}
+              flightCode={flight.codeShareData[0].codeShare}
+              status={flight.status}
+            />
+          );
+        })}
       </tbody>
     </table>
   );
