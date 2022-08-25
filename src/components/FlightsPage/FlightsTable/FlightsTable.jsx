@@ -21,14 +21,14 @@ const FlightsTable = ({ flightsList }) => {
             : flight['airportFromID.city_en'];
           return (
             <FlightsTableItem
-              time={flight.actual}
               key={flight.ID}
               term={flight.term}
-              airlineImg={flight.airline.en.logoName}
+              time={flight.actual}
               destination={destination}
+              status={flight.status}
+              airlineImg={flight.airline.en.logoName}
               airlineName={flight.airline.en.name}
               flightCode={flight.codeShareData[0].codeShare}
-              status={flight.status}
             />
           );
         })}
