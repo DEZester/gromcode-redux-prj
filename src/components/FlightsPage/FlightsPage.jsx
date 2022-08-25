@@ -10,13 +10,13 @@ import { departuresSelector, arrivalsSelector } from './features/flights.selecto
 import * as flightsActions from './features/flights.actions';
 
 const FlightsPage = ({ departureFlightsList, arrivalsFlightsList, getFlightsList }) => {
-  const [isActive, changeStatus] = useState(true);
+  const [linkStatus, changeStatus] = useState(true);
 
   useEffect(() => {
     getFlightsList();
   }, []);
 
-  const flightsList = isActive ? departureFlightsList : arrivalsFlightsList;
+  const flightsList = linkStatus ? departureFlightsList : arrivalsFlightsList;
 
   return (
     <div className="flights">
