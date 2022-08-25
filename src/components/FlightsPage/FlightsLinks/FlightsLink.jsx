@@ -1,10 +1,14 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const FlightsLink = ({ headerName }) => {
   return (
-    <a href="#" className="links__item">
+    <NavLink
+      to={headerName}
+      className={({ isActive }) => (isActive ? `links__item links__item-active` : `links__item`)}
+    >
       {headerName}
-    </a>
+    </NavLink>
   );
 };
 export default FlightsLink;

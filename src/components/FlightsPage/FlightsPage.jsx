@@ -1,13 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { departuresSelector, arrivalsSelector } from './features/flights.selectors';
-import * as flightsActions from './features/flights.actions';
+
 import FlightsDates from './FlightsDates/FlightsDates';
 import FlightsLink from './FlightsLinks/FlightsLink';
 import FlightsTable from './FlightsTable/FlightsTable';
-import NoFlights from './NoFlights/NoFights';
+
+import { departuresSelector, arrivalsSelector } from './features/flights.selectors';
+import * as flightsActions from './features/flights.actions';
 
 const FlightsPage = ({ departureFlightsList, arrivalsFlightsList, getFlightsList }) => {
+  const [isActive, setStatusActive] = useState(true);
+
   useEffect(() => {
     getFlightsList();
   }, []);
@@ -19,7 +22,7 @@ const FlightsPage = ({ departureFlightsList, arrivalsFlightsList, getFlightsList
         <FlightsLink headerName="arrivals" />
       </div>
       <FlightsDates />
-      {departureFlightsList.length > 0 ? (
+      {isActive ? (
         <FlightsTable flightsList={departureFlightsList} />
       ) : (
         <FlightsTable flightsList={arrivalsFlightsList} />

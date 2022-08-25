@@ -2,7 +2,7 @@
   display: flex;
   width: 1120px;
   height: 59px;
-  background: #73d2f0;
+  background-color: #73d2f0;
   border-radius: 50px 50px 0 0;
   &__item {
     display: flex;
@@ -17,13 +17,9 @@
     line-height: 60px;
     font-weight: 700;
     border-radius: 50px 50px 0 0;
-    &:hover {
-      background-color: #fff;
-      color: #73d2f0;
-    }
   }
   &__item-active {
     background-color: #fff;
-    color: #73d2f0;
+    color: #1eb7ee;
   }
 }
