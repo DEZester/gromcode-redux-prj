@@ -6,7 +6,7 @@ import FlightsLink from './FlightsLinks/FlightsLink';
 import FlightsTable from './FlightsTable/FlightsTable';
 import NoFlights from './NoFlights/NoFights';
 
-import { departuresSelector, arrivalsSelector } from './features/flights.selectors';
+import { sortedFlightsDepartures, sortedFlightsArrivals } from './features/flights.selectors';
 import * as flightsActions from './features/flights.actions';
 
 const FlightsPage = ({ departureFlightsList, arrivalsFlightsList, getFlightsList }) => {
@@ -32,8 +32,8 @@ const FlightsPage = ({ departureFlightsList, arrivalsFlightsList, getFlightsList
 
 const mapState = state => {
   return {
-    departureFlightsList: departuresSelector(state),
-    arrivalsFlightsList: arrivalsSelector(state),
+    departureFlightsList: sortedFlightsDepartures(state),
+    arrivalsFlightsList: sortedFlightsArrivals(state),
   };
 };
 
