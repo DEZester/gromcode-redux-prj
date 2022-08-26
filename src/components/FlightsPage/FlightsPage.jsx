@@ -17,7 +17,7 @@ const FlightsPage = ({ departureFlightsList, arrivalsFlightsList, getFlightsList
   }, []);
 
   const flightsList = linkStatus ? departureFlightsList : arrivalsFlightsList;
-
+  //  flightsList.find(elem => elem.flightId === 'LO756') // найти элемент в списке
   return (
     <div className="flights">
       <div className="links">
