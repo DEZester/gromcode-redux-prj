@@ -1,6 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const SearchPage = () => {
+  const [inputValue, changeValue] = useState('');
+
+  const changeHandler = e => {
+    changeValue(e.target.value);
+  };
+
   return (
     <div className="search-page">
       <div className="search-page-container">
@@ -12,6 +18,8 @@ const SearchPage = () => {
               className="search-field__input"
               type="text"
               placeholder="Airline, destination or flight #"
+              value={inputValue}
+              onChange={changeHandler}
             />
             <button className="search-field__btn" type="submit">
               Search

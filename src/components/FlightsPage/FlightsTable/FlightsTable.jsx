@@ -15,21 +15,18 @@ const FlightsTable = ({ flightsList }) => {
         </tr>
       </thead>
       <tbody className="table__list">
-        {flightsList.map(flight => {
-          console.log(flight);
-          return (
-            <FlightsTableItem
-              key={flight.id}
-              term={flight.term}
-              time={flight.time}
-              destination={flight.destination}
-              status={flight.status}
-              airlineImg={flight.airlineImg}
-              airlineName={flight.company}
-              flightCode={flight.flightId}
-            />
-          );
-        })}
+        {flightsList.map(flight => (
+          <FlightsTableItem
+            key={flight.id}
+            term={flight.term}
+            time={flight.time}
+            destination={flight.destination}
+            status={flight.status}
+            airlineImg={flight.airlineImg}
+            airlineName={flight.company}
+            flightCode={flight.flightId}
+          />
+        ))}
       </tbody>
     </table>
   );
