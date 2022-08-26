@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+import moment from 'moment';
 
 import FlightsDates from './FlightsDates/FlightsDates';
 import FlightsLink from './FlightsLinks/FlightsLink';
@@ -11,20 +12,22 @@ import * as flightsActions from './features/flights.actions';
 
 const FlightsPage = ({ departureFlightsList, arrivalsFlightsList, getFlightsList }) => {
   const [linkStatus, changeStatus] = useState(true);
+  const [needDate, changeDate] = useState(moment(new Date()).format('DD-MM-yy'));
 
   useEffect(() => {
-    getFlightsList();
-  }, []);
+    getFlightsList(needDate);
+  }, [needDate]);
 
   const flightsList = linkStatus ? departureFlightsList : arrivalsFlightsList;
   //  flightsList.find(elem => elem.flightId === 'LO756') // найти элемент в списке
+
   return (
     <div className="flights">
       <div className="links">
         <FlightsLink headerName="departures" changeStatus={changeStatus} />
         <FlightsLink headerName="arrivals" changeStatus={changeStatus} />
       </div>
-      <FlightsDates />
+      <FlightsDates changeDate={changeDate} />
       {flightsList.length > 0 ? <FlightsTable flightsList={flightsList} /> : <NoFlights />}
     </div>
   );

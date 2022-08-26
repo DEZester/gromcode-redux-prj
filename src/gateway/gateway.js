@@ -1,7 +1,7 @@
-const baseUrl = `https://api.iev.aero/api/flights/22-01-2022`;
+const baseUrl = `https://api.iev.aero/api/flights`;
 
-const fetchFlights = () =>
-  fetch(baseUrl).then(response => {
+const fetchFlights = date =>
+  fetch(`${baseUrl}/${date}`).then(response => {
     if (response.ok) {
       return response.json();
     }
