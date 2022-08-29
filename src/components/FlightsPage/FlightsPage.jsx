@@ -10,7 +10,13 @@ import NoFlights from './NoFlights/NoFights';
 import { sortedFlightsDepartures, sortedFlightsArrivals } from './features/flights.selectors';
 import * as flightsActions from './features/flights.actions';
 
-const FlightsPage = ({ departureFlightsList, arrivalsFlightsList, getFlightsList }) => {
+const FlightsPage = ({
+  departureFlightsList,
+  arrivalsFlightsList,
+  getFlightsList,
+  inputValue,
+  searchFlight,
+}) => {
   const [linkStatus, changeStatus] = useState(true);
   const [needDate, changeDate] = useState(moment(new Date()).format('DD-MM-yy'));
 
@@ -19,8 +25,8 @@ const FlightsPage = ({ departureFlightsList, arrivalsFlightsList, getFlightsList
   }, [needDate]);
 
   const flightsList = linkStatus ? departureFlightsList : arrivalsFlightsList;
-  //  flightsList.find(elem => elem.flightId === 'LO756') // найти элемент в списке
 
+  const finalFlightsList = searchFlight(inputValue, flightsList);
   return (
     <div className="flights">
       <div className="links">
@@ -28,7 +34,11 @@ const FlightsPage = ({ departureFlightsList, arrivalsFlightsList, getFlightsList
         <FlightsLink headerName="arrivals" changeStatus={changeStatus} />
       </div>
       <FlightsDates changeDate={changeDate} />
-      {flightsList.length > 0 ? <FlightsTable flightsList={flightsList} /> : <NoFlights />}
+      {finalFlightsList.length > 0 ? (
+        <FlightsTable flightsList={finalFlightsList} />
+      ) : (
+        <NoFlights />
+      )}
     </div>
   );
 };

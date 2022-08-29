@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const SearchPage = () => {
-  const [inputValue, changeValue] = useState('');
-
+const SearchPage = ({ inputValue, changeValue, changeStatusBtn }) => {
   const changeHandler = e => {
     changeValue(e.target.value);
   };
@@ -13,7 +11,7 @@ const SearchPage = () => {
         <h2 className="search-page__title">SEARCH FLIGHT</h2>
         <div className="search-field">
           <span className="search-field__loop"></span>
-          <form className="search-field__form">
+          <div className="search-field__container">
             <input
               className="search-field__input"
               type="text"
@@ -21,10 +19,10 @@ const SearchPage = () => {
               value={inputValue}
               onChange={changeHandler}
             />
-            <button className="search-field__btn" type="submit">
+            <button className="search-field__btn" onClick={() => changeStatusBtn(true)}>
               Search
             </button>
-          </form>
+          </div>
         </div>
       </div>
     </div>
