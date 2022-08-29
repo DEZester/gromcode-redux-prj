@@ -1,8 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { useParams } from 'react-router-dom';
+
 import FlightsListItem from './FlightsListItem';
 import NoFlights from '../NoFlights/NoFights';
 
-const FlightsList = ({ flightsList }) => {
+import { sortedFlightsDepartures, sortedFlightsArrivals } from '../features/flights.selectors';
+import * as flightsActions from '../features/flights.actions';
+
+const FlightsList = ({ getFlightsList, departureFlightsList, arrivalsFlightsList, needDate }) => {
+  const { listName } = useParams();
+
+  useEffect(() => {
+    getFlightsList(needDate);
+  }, [needDate]);
+
+  const flightsList = listName === 'departures' ? departureFlightsList : arrivalsFlightsList;
   return (
     <>
       {flightsList.length > 0 ? (
@@ -25,4 +38,15 @@ const FlightsList = ({ flightsList }) => {
   );
 };
 
-export default FlightsList;
+const mapState = state => {
+  return {
+    departureFlightsList: sortedFlightsDepartures(state),
+    arrivalsFlightsList: sortedFlightsArrivals(state),
+  };
+};
+
+const mapDispatch = {
+  getFlightsList: flightsActions.getFlightsData,
+};
+
+export default connect(mapState, mapDispatch)(FlightsList);

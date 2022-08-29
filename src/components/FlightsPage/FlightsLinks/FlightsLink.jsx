@@ -1,19 +1,14 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
-const FlightsLink = ({ headerName, changeStatus }) => {
-  const setActive = ({ isActive }) => (isActive ? `links__item links__item-active` : `links__item`);
+const FlightsLink = ({ headerName }) => {
+  // const { search } = useLocation();
+  // const params = search || '';
+  const activeLink = ({ isActive }) =>
+    isActive ? `links__item links__item-active` : `links__item`;
 
-  const setStatus = () => {
-    if (headerName === 'departures') {
-      changeStatus(true);
-    }
-    if (headerName === 'arrivals') {
-      changeStatus(false);
-    }
-  };
   return (
-    <NavLink to={headerName} className={setActive} onClick={setStatus}>
+    <NavLink to={`/${headerName}`} className={activeLink}>
       {headerName}
     </NavLink>
   );
