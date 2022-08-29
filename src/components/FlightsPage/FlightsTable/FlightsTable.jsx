@@ -1,7 +1,7 @@
 import React from 'react';
-import FlightsTableItem from './FlightsTableItem';
+import { Outlet } from 'react-router-dom';
 
-const FlightsTable = ({ flightsList }) => {
+const FlightsTable = () => {
   return (
     <table className="table">
       <thead>
@@ -15,18 +15,7 @@ const FlightsTable = ({ flightsList }) => {
         </tr>
       </thead>
       <tbody className="table__list">
-        {flightsList.map(flight => (
-          <FlightsTableItem
-            key={flight.id}
-            term={flight.term}
-            time={flight.time}
-            destination={flight.destination}
-            status={flight.status}
-            airlineImg={flight.airlineImg}
-            airlineName={flight.company}
-            flightCode={flight.flightId}
-          />
-        ))}
+        <Outlet />
       </tbody>
     </table>
   );

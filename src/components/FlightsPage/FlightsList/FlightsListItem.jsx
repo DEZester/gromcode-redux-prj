@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 
-const FlightsTableItem = ({
+const FlightsListItem = ({
   term,
   airlineImg,
   destination,
@@ -37,4 +37,4 @@ const FlightsTableItem = ({
   );
 };
 
-export default FlightsTableItem;
+export default FlightsListItem;

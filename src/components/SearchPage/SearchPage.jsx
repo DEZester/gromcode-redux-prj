@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const SearchPage = ({ inputValue, changeValue, changeStatusBtn }) => {
+const SearchPage = () => {
+  const [inputValue, changeValue] = useState('');
   const changeHandler = e => {
     changeValue(e.target.value);
   };
@@ -19,9 +20,7 @@ const SearchPage = ({ inputValue, changeValue, changeStatusBtn }) => {
               value={inputValue}
               onChange={changeHandler}
             />
-            <button className="search-field__btn" onClick={() => changeStatusBtn(true)}>
-              Search
-            </button>
+            <button className="search-field__btn">Search</button>
           </div>
         </div>
       </div>

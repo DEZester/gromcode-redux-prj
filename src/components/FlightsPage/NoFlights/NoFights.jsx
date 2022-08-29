@@ -2,9 +2,11 @@ import React from 'react';
 
 const NoFlights = () => {
   return (
-    <div className="noFlights">
-      <span className="noFlights__title">No Flights</span>
-    </div>
+    <tr className="noFlights">
+      <th className="noFlights__title" colSpan={6}>
+        No Flights
+      </th>
+    </tr>
   );
 };
 export default NoFlights;
