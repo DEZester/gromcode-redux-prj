@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 
 import FlightsListItem from './FlightsListItem';
 import NoFlights from '../NoFlights/NoFights';
@@ -10,16 +10,37 @@ import * as flightsActions from '../features/flights.actions';
 
 const FlightsList = ({ getFlightsList, departureFlightsList, arrivalsFlightsList, needDate }) => {
   const { listName } = useParams();
+  const { state } = useLocation();
 
   useEffect(() => {
     getFlightsList(needDate);
   }, [needDate]);
 
   const flightsList = listName === 'departures' ? departureFlightsList : arrivalsFlightsList;
+
+  const searchFlights = (flightsList, searchValue) => {
+    if (searchValue != null) {
+      return flightsList.filter(flight => {
+        if (flight.flightId === searchValue) {
+          return flight;
+        }
+        if (flight.company === searchValue) {
+          return flight;
+        }
+        if (flight.destination === searchValue) {
+          return flight;
+        }
+      });
+    }
+    return flightsList;
+  };
+
+  const flightsListWithSearch = searchFlights(flightsList, state);
+
   return (
     <>
-      {flightsList.length > 0 ? (
-        flightsList.map(flight => (
+      {flightsListWithSearch.length > 0 ? (
+        flightsListWithSearch.map(flight => (
           <FlightsListItem
             key={flight.id}
             term={flight.term}
