@@ -8,18 +8,16 @@ import FlightsTable from './FlightsTable/FlightsTable';
 import FlightsList from './FlightsList/FlightsList';
 
 const FlightsPage = () => {
-  const [needDate, changeDate] = useState(moment(new Date()).format('DD-MM-yy'));
-
   return (
     <div className="flights-page">
       <div className="links">
         <FlightsLink headerName="departures" />
         <FlightsLink headerName="arrivals" />
       </div>
-      <FlightsDates changeDate={changeDate} />
+      <FlightsDates />
       <Routes>
         <Route path="/" element={<FlightsTable />}>
-          <Route path=":listName" element={<FlightsList needDate={needDate} />} />
+          <Route path=":listName" element={<FlightsList />} />
         </Route>
       </Routes>
     </div>

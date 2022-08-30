@@ -8,13 +8,18 @@ import NoFlights from '../NoFlights/NoFights';
 import { sortedFlightsDepartures, sortedFlightsArrivals } from '../features/flights.selectors';
 import * as flightsActions from '../features/flights.actions';
 
-const FlightsList = ({ getFlightsList, departureFlightsList, arrivalsFlightsList, needDate }) => {
+const qs = require('qs');
+
+const FlightsList = ({ getFlightsList, departureFlightsList, arrivalsFlightsList }) => {
+  const { search } = useLocation();
   const { listName } = useParams();
   const { state } = useLocation();
 
+  const { date } = qs.parse(search.replace('?', ''));
+
   useEffect(() => {
-    getFlightsList(needDate);
-  }, [needDate]);
+    getFlightsList(date);
+  }, [date]);
 
   const flightsList = listName === 'departures' ? departureFlightsList : arrivalsFlightsList;
 

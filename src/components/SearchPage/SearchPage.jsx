@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const SearchPage = () => {
   const [flightValue, changeValue] = useState('');
@@ -20,7 +20,7 @@ const SearchPage = () => {
             />
             <button
               className="search-field__btn"
-              onClick={() => navigate('/departures', { state: flightValue })}
+              onClick={() => navigate('/:departures', { state: flightValue })}
             >
               Search
             </button>
