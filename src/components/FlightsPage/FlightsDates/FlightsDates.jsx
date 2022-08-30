@@ -7,8 +7,9 @@ const qs = require('qs');
 const FlightsDates = () => {
   const [currentDay, setCurrentDay] = useState();
   const { search } = useLocation();
-  const { value } = qs.parse(search.replace('?', ''));
   const navigate = useNavigate();
+
+  const { value } = qs.parse(search.replace('?', ''));
 
   const changeDateHandler = date => {
     const formatedDate = moment(date).format('DD-MM-YYYY');
