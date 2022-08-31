@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, useParams } from 'react-router-dom';
 const qs = require('qs');
 
 const SearchPage = () => {
@@ -24,10 +24,7 @@ const SearchPage = () => {
               value={flightValue}
               onChange={e => changeValue(e.target.value)}
             />
-            <button
-              className="search-field__btn"
-              onClick={() => navigate(url, { state: flightValue })}
-            >
+            <button className="search-field__btn" onClick={() => navigate(url)}>
               Search
             </button>
           </div>

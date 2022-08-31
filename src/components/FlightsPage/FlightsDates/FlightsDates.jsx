@@ -6,8 +6,8 @@ const qs = require('qs');
 
 const FlightsDates = () => {
   const [currentDay, setCurrentDay] = useState();
-  const { search } = useLocation();
   const navigate = useNavigate();
+  const { search } = useLocation();
 
   const { value } = qs.parse(search.replace('?', ''));
 

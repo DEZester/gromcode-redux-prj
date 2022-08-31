@@ -13,9 +13,7 @@ const qs = require('qs');
 const FlightsList = ({ getFlightsList, departureFlightsList, arrivalsFlightsList }) => {
   const { search } = useLocation();
   const { listName } = useParams();
-  const { state } = useLocation();
-
-  const { date } = qs.parse(search.replace('?', ''));
+  const { date, value } = qs.parse(search.replace('?', ''));
 
   useEffect(() => {
     getFlightsList(date);
@@ -40,7 +38,7 @@ const FlightsList = ({ getFlightsList, departureFlightsList, arrivalsFlightsList
     return flightsList;
   };
 
-  const flightsListWithSearch = searchFlights(flightsList, state);
+  const flightsListWithSearch = searchFlights(flightsList, value);
 
   return (
     <>
