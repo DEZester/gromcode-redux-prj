@@ -4,8 +4,9 @@ const SearchPage = ({ date, setSearchParams }) => {
   const [flightValue, changeValue] = useState('');
 
   const searchHandler = () => {
-    setSearchParams({ date, value: flightValue });
+    return flightValue ? setSearchParams({ date, search: flightValue }) : setSearchParams({ date });
   };
+
   return (
     <div className="search-page">
       <div className="search-page-container">

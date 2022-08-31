@@ -13,26 +13,19 @@ const FlightsList = ({
   departureFlightsList,
   arrivalsFlightsList,
   date,
-  value,
+  searchValue,
 }) => {
   const { listName } = useParams();
   useEffect(() => {
     getFlightsList(date);
   }, [date]);
 
-  console.log(date);
   const flightsList = listName === 'departures' ? departureFlightsList : arrivalsFlightsList;
 
   const searchFlights = (flightsList, searchValue) => {
     if (searchValue !== '') {
       return flightsList.filter(flight => {
-        if (flight.flightId === searchValue) {
-          return flight;
-        }
-        if (flight.company === searchValue) {
-          return flight;
-        }
-        if (flight.destination === searchValue) {
+        if (Object.values(flight).includes(searchValue)) {
           return flight;
         }
       });
@@ -40,18 +33,7 @@ const FlightsList = ({
     return flightsList;
   };
 
-  // const obj = {
-  //   a: 1,
-  //   b: 2,
-  //   c: 3,
-  // };
-  // function checkObj(obj, check_val) {
-  //   return Object.values(obj).includes(check_val);
-  // }
-
-  // console.log(checkObj(obj, 3));
-
-  const flightsListWithSearch = searchFlights(flightsList, value);
+  const flightsListWithSearch = searchFlights(flightsList, searchValue);
 
   return (
     <>
