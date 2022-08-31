@@ -1,14 +1,20 @@
 import React, { useState } from 'react';
 import moment from 'moment';
 import FlightsChoosenDay from './FlightsChoosenDay';
+import { useNavigate } from 'react-router-dom';
 
-const FlightsDates = ({ setSearchParams }) => {
+const qs = require('qs');
+
+const FlightsDates = ({ setSearchParams, date }) => {
   const [currentDay, setCurrentDay] = useState();
+  const navigate = useNavigate();
 
-  const changeDateHandler = date => {
-    const formatedDate = moment(date).format('DD-MM-YYYY');
+  const changeDateHandler = dateFromInput => {
+    const formatedDate = moment(dateFromInput).format('DD-MM-YYYY');
     setCurrentDay(formatedDate);
     setSearchParams({ date: formatedDate });
+    const params = qs.stringify({ date: formatedDate });
+    navigate(`/departures?${params}`);
   };
 
   const yesterday = moment().subtract(1, 'd');

@@ -14,7 +14,7 @@ const FlightsPage = ({ date, setSearchParams, searchValue }) => {
         <FlightsLink headerName="departures" />
         <FlightsLink headerName="arrivals" />
       </div>
-      <FlightsDates setSearchParams={setSearchParams} />
+      <FlightsDates setSearchParams={setSearchParams} date={date} />
       <Routes>
         <Route path="/" element={<FlightsTable />}>
           <Route path=":listName" element={<FlightsList date={date} searchValue={searchValue} />} />
