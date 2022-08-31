@@ -11,7 +11,9 @@
 - [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 - [React](https://reactjs.org/)
 - [React Hooks](https://reactjs.org/docs/hooks-intro.html)
+- [React-Router-DOM](https://reactrouter.com/en/v6.3.0/getting-started/overview)
+- [Redux](https://redux.js.org/introduction/getting-started)
 
 ### Author
 
-- [Vlad Chubar](https://github.com/ArDezZz)
+- [Vlad Chubar](https://github.com/DEZester)
