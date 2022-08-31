@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { useLocation, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import FlightsListItem from './FlightsListItem';
 import NoFlights from '../NoFlights/NoFights';
@@ -8,21 +8,23 @@ import NoFlights from '../NoFlights/NoFights';
 import { sortedFlightsDepartures, sortedFlightsArrivals } from '../features/flights.selectors';
 import * as flightsActions from '../features/flights.actions';
 
-const qs = require('qs');
-
-const FlightsList = ({ getFlightsList, departureFlightsList, arrivalsFlightsList }) => {
-  const { search } = useLocation();
+const FlightsList = ({
+  getFlightsList,
+  departureFlightsList,
+  arrivalsFlightsList,
+  date,
+  value,
+}) => {
   const { listName } = useParams();
-  const { date, value } = qs.parse(search.replace('?', ''));
-
   useEffect(() => {
     getFlightsList(date);
   }, [date]);
 
+  console.log(date);
   const flightsList = listName === 'departures' ? departureFlightsList : arrivalsFlightsList;
 
   const searchFlights = (flightsList, searchValue) => {
-    if (searchValue != null) {
+    if (searchValue !== '') {
       return flightsList.filter(flight => {
         if (flight.flightId === searchValue) {
           return flight;
@@ -37,6 +39,17 @@ const FlightsList = ({ getFlightsList, departureFlightsList, arrivalsFlightsList
     }
     return flightsList;
   };
+
+  // const obj = {
+  //   a: 1,
+  //   b: 2,
+  //   c: 3,
+  // };
+  // function checkObj(obj, check_val) {
+  //   return Object.values(obj).includes(check_val);
+  // }
+
+  // console.log(checkObj(obj, 3));
 
   const flightsListWithSearch = searchFlights(flightsList, value);
 

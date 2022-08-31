@@ -4,15 +4,13 @@ import FlightsPage from './components/FlightsPage/FlightsPage';
 import SearchPage from './components/SearchPage/SearchPage';
 import store from './store';
 import { BrowserRouter } from 'react-router-dom';
+import Airport from './components/Airport';
 
 const App = () => {
   return (
     <Provider store={store}>
       <BrowserRouter>
-        <div className="page">
-          <SearchPage />
-          <FlightsPage />
-        </div>
+        <Airport />
       </BrowserRouter>
     </Provider>
   );

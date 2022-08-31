@@ -7,17 +7,17 @@ import FlightsLink from './FlightsLinks/FlightsLink';
 import FlightsTable from './FlightsTable/FlightsTable';
 import FlightsList from './FlightsList/FlightsList';
 
-const FlightsPage = () => {
+const FlightsPage = ({ date, setSearchParams, value }) => {
   return (
     <div className="flights-page">
       <div className="links">
         <FlightsLink headerName="departures" />
         <FlightsLink headerName="arrivals" />
       </div>
-      <FlightsDates />
+      <FlightsDates setSearchParams={setSearchParams} />
       <Routes>
         <Route path="/" element={<FlightsTable />}>
-          <Route path=":listName" element={<FlightsList />} />
+          <Route path=":listName" element={<FlightsList date={date} value={value} />} />
         </Route>
       </Routes>
     </div>

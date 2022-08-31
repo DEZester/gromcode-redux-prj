@@ -1,15 +1,11 @@
 import React, { useState } from 'react';
-import { useNavigate, useLocation, useParams } from 'react-router-dom';
-const qs = require('qs');
 
-const SearchPage = () => {
-  const { search } = useLocation();
-  const { value, date } = qs.parse(search.replace('?', ''));
-  const [flightValue, changeValue] = useState(value || '');
-  const navigate = useNavigate();
+const SearchPage = ({ date, setSearchParams }) => {
+  const [flightValue, changeValue] = useState('');
 
-  const params = qs.stringify(flightValue ? { date, value: flightValue } : { date });
-  const url = `/departures?${params}`;
+  const searchHandler = () => {
+    setSearchParams({ date, value: flightValue });
+  };
   return (
     <div className="search-page">
       <div className="search-page-container">
@@ -24,7 +20,7 @@ const SearchPage = () => {
               value={flightValue}
               onChange={e => changeValue(e.target.value)}
             />
-            <button className="search-field__btn" onClick={() => navigate(url)}>
+            <button className="search-field__btn" onClick={searchHandler}>
               Search
             </button>
           </div>
