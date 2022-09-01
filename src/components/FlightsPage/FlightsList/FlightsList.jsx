@@ -18,7 +18,9 @@ const FlightsList = ({
   const { listName } = useParams();
 
   useEffect(() => {
-    getFlightsList(date);
+    if (date) {
+      getFlightsList(date);
+    }
   }, [date]);
 
   const flightsList = listName === 'departures' ? departureFlightsList : arrivalsFlightsList;
