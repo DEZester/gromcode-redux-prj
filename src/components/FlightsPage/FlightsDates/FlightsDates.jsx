@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 const qs = require('qs');
 
-const FlightsDates = ({ setSearchParams, date }) => {
+const FlightsDates = ({ setSearchParams }) => {
   const [currentDay, setCurrentDay] = useState();
   const navigate = useNavigate();
 
