@@ -16,6 +16,7 @@ const FlightsList = ({
   searchValue,
 }) => {
   const { listName } = useParams();
+
   useEffect(() => {
     getFlightsList(date);
   }, [date]);

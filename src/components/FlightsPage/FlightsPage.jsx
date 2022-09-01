@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
-import moment from 'moment';
+import React from 'react';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 
 import FlightsDates from './FlightsDates/FlightsDates';
 import FlightsLink from './FlightsLinks/FlightsLink';
@@ -8,6 +7,16 @@ import FlightsTable from './FlightsTable/FlightsTable';
 import FlightsList from './FlightsList/FlightsList';
 
 const FlightsPage = ({ date, setSearchParams, searchValue }) => {
+  const { search, pathname } = useLocation();
+  const params = search || '';
+  const navigate = useNavigate();
+
+  if (pathname !== '/arrivals') {
+    window.addEventListener('load', () => {
+      navigate(`departures${params}`);
+    });
+  }
+
   return (
     <div className="flights-page">
       <div className="links">
